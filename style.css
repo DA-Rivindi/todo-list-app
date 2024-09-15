@@ -166,8 +166,8 @@ body.dark-mode h1 {
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), 
                 -4px -4px 8px rgba(255, 255, 255, 0.9);
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 10px;
     font-family: 'Poppins', sans-serif;
     transition: background-color 0.3s ease;
 }
@@ -181,18 +181,9 @@ body.dark-mode h1 {
     background-color: #ffffff;
 }
 
-.task-item button.remove-btn {
-    background: #c82333;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 10px;
+.task-item input.status-checkbox {
+    accent-color: #007bff;
     cursor: pointer;
-    font-size: 14px;
-}
-
-.task-item button.remove-btn:hover {
-    background: #a71d2a;
 }
 
 /* Status Button */
