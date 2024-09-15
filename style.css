@@ -1,4 +1,4 @@
-/* Importing a modern font and setting up the basic styles */
+/* Importing the Poppins font and setting up the basic styles */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 body {
@@ -70,6 +70,12 @@ h1 {
   font-size: 16px;
   font-family: 'Poppins', sans-serif; /* Ensure font style matches */
   transition: box-shadow 0.3s ease;
+}
+
+/* Placeholder text styling */
+#todo-input::placeholder {
+  font-family: 'Poppins', sans-serif; /* Ensure placeholder text uses the correct font */
+  color: #888; /* Optional: Set placeholder text color */
 }
 
 #todo-input:focus {
