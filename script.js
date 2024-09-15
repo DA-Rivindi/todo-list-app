@@ -1,21 +1,24 @@
-// Function to add a task
+// Function to add a new task
 function addTask() {
     const taskInput = document.getElementById('todo-input');
     const category = document.getElementById('category').value;
-    const dueDate = document.getElementById('due-date').value;
+    const dueDatetime = document.getElementById('due-datetime').value;
     
-    if (taskInput.value.trim() === '') return;
+    if (taskInput.value.trim() === '') return; // Do nothing if the input is empty
     
     const taskItem = document.createElement('li');
     taskItem.classList.add(category);
     taskItem.id = `task-${Date.now()}`;
     taskItem.draggable = true;
     
+    // Format the due date text if provided
+    const dueText = dueDatetime ? ` (Due: ${dueDatetime})` : '';
     taskItem.innerHTML = `
-        ${taskInput.value} (Due: ${dueDate}) 
+        ${taskInput.value}${dueText} 
         <button class="remove-btn" onclick="removeTask(this.parentElement)">X</button>
     `;
     
+    // Add drag-and-drop functionality
     taskItem.addEventListener('dragstart', (event) => {
         event.dataTransfer.setData('text/plain', event.target.id);
     });
@@ -35,8 +38,12 @@ function addTask() {
         }
     });
     
+    // Append the new task to the list
     document.getElementById('todo-list').appendChild(taskItem);
+    
+    // Clear input fields after adding a task
     taskInput.value = '';
+    document.getElementById('due-datetime').value = '';
 }
 
 // Function to remove a task
@@ -47,7 +54,7 @@ function removeTask(taskElement) {
     }, 300); // Match the duration of the fade-out animation
 }
 
-// Function to filter tasks
+// Function to filter tasks by status
 function filterTasks(status) {
     const tasks = document.querySelectorAll('#todo-list li');
     tasks.forEach(task => {
@@ -59,7 +66,7 @@ function filterTasks(status) {
     });
 }
 
-// Function to search tasks
+// Function to search tasks by text
 function searchTasks() {
     const searchTerm = document.getElementById('search').value.toLowerCase();
     const tasks = document.querySelectorAll('#todo-list li');
@@ -80,6 +87,7 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
     document.getElementById('todo-input').classList.toggle('dark-mode');
     document.getElementById('add-btn').classList.toggle('dark-mode');
     document.getElementById('search').classList.toggle('dark-mode');
+    document.getElementById('due-datetime').classList.toggle('dark-mode');
     const tasks = document.querySelectorAll('#todo-list li');
     tasks.forEach(task => task.classList.toggle('dark-mode'));
 });
