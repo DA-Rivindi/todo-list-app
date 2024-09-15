@@ -7,7 +7,7 @@ function addTask() {
     if (taskInput.value.trim() === '') return; // Do nothing if the input is empty
     
     const taskItem = document.createElement('li');
-    taskItem.classList.add(category);
+    taskItem.classList.add('task-item', category); // Add task-item and category class
     taskItem.id = `task-${Date.now()}`;
     taskItem.draggable = true;
     
@@ -16,6 +16,7 @@ function addTask() {
     taskItem.innerHTML = `
         ${taskInput.value}${dueText} 
         <button class="remove-btn" onclick="removeTask(this.parentElement)">X</button>
+        <button class="status-btn" onclick="toggleStatus(this)">${category === 'completed' ? 'Mark as Active' : 'Mark as Completed'}</button>
     `;
     
     // Add drag-and-drop functionality
@@ -78,6 +79,22 @@ function searchTasks() {
             task.style.display = 'none';
         }
     });
+}
+
+// Function to toggle task status between active and completed
+function toggleStatus(button) {
+    const taskItem = button.parentElement;
+    const isCompleted = taskItem.classList.contains('completed');
+    
+    if (isCompleted) {
+        taskItem.classList.remove('completed');
+        taskItem.classList.add('active');
+        button.textContent = 'Mark as Active';
+    } else {
+        taskItem.classList.remove('active');
+        taskItem.classList.add('completed');
+        button.textContent = 'Mark as Completed';
+    }
 }
 
 // Toggle Dark Mode
