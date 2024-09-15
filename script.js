@@ -79,6 +79,7 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
     document.querySelector('.app-container').classList.toggle('dark-mode');
     document.getElementById('todo-input').classList.toggle('dark-mode');
     document.getElementById('add-btn').classList.toggle('dark-mode');
+    document.getElementById('search').classList.toggle('dark-mode');
     const tasks = document.querySelectorAll('#todo-list li');
     tasks.forEach(task => task.classList.toggle('dark-mode'));
 });
