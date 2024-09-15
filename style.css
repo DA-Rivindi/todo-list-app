@@ -1,68 +1,92 @@
-/* Apply a modern font and set a global style */
+/* Importing a modern font and setting up the basic styles */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #f0f2f5;
+  background-color: #e0e5ec;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
 }
 
-/* Style the main app container */
+/* Container with Neumorphism effect */
 .app-container {
-  background-color: white;
+  background-color: #ffffff;
   padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-  width: 350px;
+  border-radius: 20px;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.1), 
+              -8px -8px 15px rgba(255, 255, 255, 0.9);
+  width: 360px;
   text-align: center;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Add a stylish header */
+/* Heading styling */
 h1 {
-  font-size: 24px;
+  font-size: 26px;
   color: #333;
   margin-bottom: 20px;
-  letter-spacing: 1.2px;
 }
 
-/* Style the input container */
+/* Theme toggle button with Neumorphism */
+.theme-toggle-container {
+  text-align: right;
+}
+
+#theme-toggle {
+  background: #ffffff;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), 
+              -4px -4px 8px rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  font-size: 24px;
+  transition: background 0.3s ease;
+}
+
+#theme-toggle:hover {
+  background: #f0f0f0;
+}
+
+/* Input and Button styles */
 .input-container {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-/* Modern input box */
 #todo-input {
   flex: 1;
   padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  border: none;
+  border-radius: 20px;
+  background-color: #f5f5f5;
+  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.1), 
+              inset -4px -4px 8px rgba(255, 255, 255, 0.9);
   font-size: 16px;
-  transition: border 0.3s;
+  transition: box-shadow 0.3s ease;
 }
 
 #todo-input:focus {
   outline: none;
-  border-color: #007bff;
+  box-shadow: inset 6px 6px 12px rgba(0, 0, 0, 0.2), 
+              inset -6px -6px 12px rgba(255, 255, 255, 0.9);
 }
 
-/* Add button styling with hover effect */
+/* Button styling */
 #add-btn {
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 12px 16px;
-  border-radius: 6px;
+  padding: 12px 20px;
+  border-radius: 20px;
   margin-left: 10px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: background-color 0.3s ease, transform 0.2s ease;
   font-size: 16px;
 }
 
@@ -71,28 +95,29 @@ h1 {
   transform: translateY(-2px);
 }
 
-/* Style the task list with modern spacing */
+/* Task list styling */
 #todo-list {
   list-style-type: none;
   padding: 0;
   margin-top: 20px;
 }
 
-/* Individual task items */
+/* Task item styling */
 li {
-  background-color: #f9f9f9;
+  background-color: #f5f5f5;
   padding: 14px;
   margin-bottom: 12px;
-  border-radius: 8px;
+  border-radius: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background-color 0.3s, transform 0.2s;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), 
+              -4px -4px 8px rgba(255, 255, 255, 0.9);
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 li:hover {
-  background-color: #f1f1f1;
+  background-color: #e0e5ec;
   transform: translateY(-2px);
 }
 
@@ -102,16 +127,19 @@ button.remove-btn {
   color: white;
   border: none;
   padding: 8px 12px;
-  border-radius: 6px;
+  border-radius: 50%;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), 
+              -4px -4px 8px rgba(255, 255, 255, 0.9);
+  transition: background-color 0.3s ease, transform 0.2s ease;
   font-size: 14px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 button.remove-btn i {
-  margin-left: 5px;
+  margin-left: 0;
 }
 
 button.remove-btn:hover {
@@ -119,50 +147,48 @@ button.remove-btn:hover {
   transform: scale(1.05);
 }
 
-/* Completed task with strike-through */
+/* Completed task styling */
 li.completed {
   text-decoration: line-through;
   color: gray;
   opacity: 0.7;
 }
 
-/* Theme Toggle Button */
-.theme-toggle-container {
-  text-align: right;
-}
-
-#theme-toggle {
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-body.dark-mode #theme-toggle {
-  color: #f0f2f5;
-}
-
-/* Dark Mode Styles */
+/* Dark mode styles */
 body.dark-mode {
   background-color: #181818;
 }
 
 .app-container.dark-mode {
+  background-color: #2e2e2e;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3), 
+              -8px -8px 15px rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode #todo-input {
   background-color: #333;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.3), 
+              inset -4px -4px 8px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode #add-btn {
+  background-color: #0056b3;
+}
+
+body.dark-mode li {
+  background-color: #333;
 }
 
 /* Smooth transition for input and list items */
 #todo-input,
 #add-btn {
-  transition: all 0.3s;
+  transition: all 0.3s ease;
 }
 
 li {
   opacity: 0;
   transform: translateY(10px);
-  animation: fadeIn 0.3s forwards;
+  animation: fadeIn 0.3s ease forwards;
 }
 
 @keyframes fadeIn {
@@ -171,3 +197,31 @@ li {
     transform: translateY(0);
   }
 }
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .app-container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  #add-btn {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  #todo-input {
+    font-size: 14px;
+  }
+
+  li {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  button.remove-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
+
