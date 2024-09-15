@@ -1,206 +1,238 @@
-/* Importing Poppins font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
+/* Global Styles */
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #e0e5ec;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  transition: background-color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    background-color: #e0e5ec;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    transition: background-color 0.3s ease;
 }
 
 /* Container with Neumorphism effect */
 .app-container {
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.1), 
-              -8px -8px 15px rgba(255, 255, 255, 0.9);
-  width: 360px;
-  text-align: center;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.1), 
+                -8px -8px 15px rgba(255, 255, 255, 0.9);
+    width: 360px;
+    text-align: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Heading styling */
+/* Heading Styling */
 h1 {
-  font-size: 26px;
-  color: #333;
-  margin-bottom: 20px;
+    font-size: 26px;
+    color: #333;
+    margin-bottom: 20px;
 }
 
-/* Theme toggle button with Neumorphism */
+/* Theme Toggle Button */
 .theme-toggle-container {
-  text-align: right;
+    text-align: right;
 }
 
 #theme-toggle {
-  background: #ffffff;
-  border: none;
-  border-radius: 50%;
-  padding: 10px;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), 
-              -4px -4px 8px rgba(255, 255, 255, 0.9);
-  cursor: pointer;
-  font-size: 24px;
-  transition: background 0.3s ease;
+    background: #ffffff;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), 
+                -4px -4px 8px rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    font-size: 24px;
+    transition: background 0.3s ease;
 }
 
 #theme-toggle:hover {
-  background: #f0f0f0;
+    background: #f0f0f0;
 }
 
-/* Input and Button styles */
+/* Input and Button Styles */
 .input-container {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 #todo-input {
-  flex: 1;
-  padding: 12px;
-  border: none;
-  border-radius: 20px;
-  background-color: #f5f5f5;
-  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.1), 
-              inset -4px -4px 8px rgba(255, 255, 255, 0.9);
-  font-size: 16px;
-  font-family: 'Poppins', sans-serif; /* Ensure font style matches */
-  transition: box-shadow 0.3s ease;
+    padding: 12px;
+    border: none;
+    border-radius: 20px;
+    background-color: #f5f5f5;
+    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.1), 
+                inset -4px -4px 8px rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    transition: box-shadow 0.3s ease;
 }
 
 #todo-input::placeholder {
-  font-family: 'Poppins', sans-serif; /* Ensure placeholder text uses the Poppins font */
+    font-family: 'Poppins', sans-serif;
 }
 
 #todo-input:focus {
-  outline: none;
-  box-shadow: inset 6px 6px 12px rgba(0, 0, 0, 0.2), 
-              inset -6px -6px 12px rgba(255, 255, 255, 0.9);
+    outline: none;
+    box-shadow: inset 6px 6px 12px rgba(0, 0, 0, 0.2), 
+                inset -6px -6px 12px rgba(255, 255, 255, 0.9);
 }
 
-/* Button styling */
+#category, #due-date {
+    padding: 12px;
+    border: none;
+    border-radius: 20px;
+    background-color: #f5f5f5;
+    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.1), 
+                inset -4px -4px 8px rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
 #add-btn {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 20px;
-  margin-left: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  font-size: 16px;
-  font-family: 'Poppins', sans-serif; /* Ensure font style matches */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
 }
 
 #add-btn:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
+    background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
-/* Task list styling */
+/* Filter Buttons */
+.filter-buttons {
+    margin-bottom: 20px;
+}
+
+.filter-buttons button {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px;
+    margin: 0 5px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.filter-buttons button:hover {
+    background-color: #e0e5ec;
+}
+
+/* Search Input */
+#search {
+    padding: 12px;
+    border: none;
+    border-radius: 20px;
+    background-color: #f5f5f5;
+    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.1), 
+                inset -4px -4px 8px rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+}
+
+/* Task List */
 #todo-list {
-  list-style-type: none;
-  padding: 0;
-  margin-top: 20px;
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
 }
 
-/* Task item styling */
+/* Task Item */
 li {
-  background-color: #f5f5f5;
-  padding: 14px;
-  margin-bottom: 12px;
-  border-radius: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), 
-              -4px -4px 8px rgba(255, 255, 255, 0.9);
-  transition: background-color 0.3s ease, transform 0.2s ease;
+    background-color: #f5f5f5;
+    padding: 14px;
+    margin-bottom: 12px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), 
+                -4px -4px 8px rgba(255, 255, 255, 0.9);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    animation: fadeIn 0.3s ease forwards;
 }
 
 li:hover {
-  background-color: #e0e5ec;
-  transform: translateY(-2px);
+    background-color: #e0e5ec;
+    transform: translateY(-2px);
 }
 
-/* Remove button with icon */
+/* Remove Button */
 button.remove-btn {
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), 
-              -4px -4px 8px rgba(255, 255, 255, 0.9);
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Poppins', sans-serif; /* Ensure font style matches */
-}
-
-button.remove-btn i {
-  margin-left: 0;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), 
+                -4px -4px 8px rgba(255, 255, 255, 0.9);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
 }
 
 button.remove-btn:hover {
-  background-color: #c82333;
-  transform: scale(1.05);
+    background-color: #c82333;
+    transform: scale(1.05);
 }
 
-/* Completed task styling */
+/* Completed Task */
 li.completed {
-  text-decoration: line-through;
-  color: gray;
-  opacity: 0.7;
+    text-decoration: line-through;
+    color: gray;
+    opacity: 0.7;
 }
 
-/* Dark mode styles */
+/* Dark Mode */
 body.dark-mode {
-  background-color: #181818;
+    background-color: #181818;
 }
 
 .app-container.dark-mode {
-  background-color: #2e2e2e;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3), 
-              -8px -8px 15px rgba(255, 255, 255, 0.2);
+    background-color: #2e2e2e;
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3), 
+                -8px -8px 15px rgba(255, 255, 255, 0.2);
 }
 
-body.dark-mode #todo-input {
-  background-color: #333;
-  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.3), 
-              inset -4px -4px 8px rgba(255, 255, 255, 0.1);
+#todo-input.dark-mode {
+    background-color: #333;
 }
 
-body.dark-mode #add-btn {
-  background-color: #0056b3;
+#add-btn.dark-mode {
+    background-color: #0056b3;
 }
 
-body.dark-mode li {
-  background-color: #333;
+#todo-list li.dark-mode {
+    background-color: #333;
 }
 
-/* Smooth transition for input and list items */
+/* Smooth Transition for Input and List Items */
 #todo-input,
 #add-btn {
-  transition: all 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 li {
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fadeIn 0.3s ease forwards;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.3s ease forwards;
 }
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+li.removing {
+    animation: fadeOut 0.3s ease forwards;
 }
