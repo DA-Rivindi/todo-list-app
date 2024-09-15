@@ -1,44 +1,84 @@
-// Get the button, input box, and list
-const addButton = document.getElementById('add-btn');
-const todoInput = document.getElementById('todo-input');
-const todoList = document.getElementById('todo-list');
-const themeToggleButton = document.getElementById('theme-toggle');
-
-// Add event listener to the "Add" button
-addButton.addEventListener('click', addTask);
-
-// Function to add tasks
+// Function to add a task
 function addTask() {
-  const taskText = todoInput.value.trim();
-
-  if (taskText === '') {
-    alert('Please enter a task.');
-    return;
-  }
-
-  const listItem = document.createElement('li');
-  listItem.textContent = taskText;
-
-  // Create remove button with icon
-  const removeButton = document.createElement('button');
-  removeButton.classList.add('remove-btn');
-  removeButton.innerHTML = '<i class="fas fa-trash"></i>'; // FontAwesome trash icon
-  removeButton.addEventListener('click', () => listItem.remove());
-
-  listItem.appendChild(removeButton);
-  todoList.appendChild(listItem);
-  todoInput.value = '';
-
-  // Add animation class
-  listItem.classList.add('fade-in');
-  listItem.addEventListener('click', () => {
-    listItem.classList.toggle('completed');
-  });
+    const taskInput = document.getElementById('todo-input');
+    const category = document.getElementById('category').value;
+    const dueDate = document.getElementById('due-date').value;
+    
+    if (taskInput.value.trim() === '') return;
+    
+    const taskItem = document.createElement('li');
+    taskItem.classList.add(category);
+    taskItem.id = `task-${Date.now()}`;
+    taskItem.draggable = true;
+    
+    taskItem.innerHTML = `
+        ${taskInput.value} (Due: ${dueDate}) 
+        <button class="remove-btn" onclick="removeTask(this.parentElement)">X</button>
+    `;
+    
+    taskItem.addEventListener('dragstart', (event) => {
+        event.dataTransfer.setData('text/plain', event.target.id);
+    });
+    
+    taskItem.addEventListener('dragover', (event) => {
+        event.preventDefault();
+    });
+    
+    taskItem.addEventListener('drop', (event) => {
+        event.preventDefault();
+        const id = event.dataTransfer.getData('text/plain');
+        const draggedElement = document.getElementById(id);
+        const dropTarget = event.target.closest('li');
+        
+        if (dropTarget && draggedElement !== dropTarget) {
+            document.getElementById('todo-list').insertBefore(draggedElement, dropTarget.nextSibling);
+        }
+    });
+    
+    document.getElementById('todo-list').appendChild(taskItem);
+    taskInput.value = '';
 }
 
-// Dark Mode Toggle
-themeToggleButton.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-  const isDarkMode = document.body.classList.contains('dark-mode');
-  themeToggleButton.textContent = isDarkMode ? '🌞' : '🌙';
+// Function to remove a task
+function removeTask(taskElement) {
+    taskElement.classList.add('removing');
+    setTimeout(() => {
+        taskElement.remove();
+    }, 300); // Match the duration of the fade-out animation
+}
+
+// Function to filter tasks
+function filterTasks(status) {
+    const tasks = document.querySelectorAll('#todo-list li');
+    tasks.forEach(task => {
+        if (status === 'all' || task.classList.contains(status)) {
+            task.style.display = '';
+        } else {
+            task.style.display = 'none';
+        }
+    });
+}
+
+// Function to search tasks
+function searchTasks() {
+    const searchTerm = document.getElementById('search').value.toLowerCase();
+    const tasks = document.querySelectorAll('#todo-list li');
+    
+    tasks.forEach(task => {
+        if (task.textContent.toLowerCase().includes(searchTerm)) {
+            task.style.display = '';
+        } else {
+            task.style.display = 'none';
+        }
+    });
+}
+
+// Toggle Dark Mode
+document.getElementById('theme-toggle').addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    document.querySelector('.app-container').classList.toggle('dark-mode');
+    document.getElementById('todo-input').classList.toggle('dark-mode');
+    document.getElementById('add-btn').classList.toggle('dark-mode');
+    const tasks = document.querySelectorAll('#todo-list li');
+    tasks.forEach(task => task.classList.toggle('dark-mode'));
 });
