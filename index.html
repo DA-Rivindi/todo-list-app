@@ -3,48 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do App</title>
+    <title>To-do List</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Include Flatpickr CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
 </head>
 <body>
     <div class="app-container">
         <div class="theme-toggle-container">
             <button id="theme-toggle">🌙</button>
         </div>
-        <h1>To-Do List</h1>
+        <h1>To-do List</h1>
+        <div class="input-container">
+            <input type="text" id="todo-input" placeholder="Add a new task">
+            <select id="category">
+                <option value="all">All</option>
+                <option value="active">Active</option>
+                <option value="completed">Completed</option>
+            </select>
+            <input type="text" id="due-datetime" placeholder="Select due date and time">
+            <button id="add-btn">Add</button>
+        </div>
         <div class="filter-buttons">
             <button onclick="filterTasks('all')">All</button>
             <button onclick="filterTasks('active')">Active</button>
             <button onclick="filterTasks('completed')">Completed</button>
         </div>
-        <div class="input-container">
-            <input type="text" id="todo-input" placeholder="Add a new task...">
-            <select id="category">
-                <option value="work">Work</option>
-                <option value="personal">Personal</option>
-            </select>
-            <!-- Flatpickr date and time input -->
-            <input type="text" id="due-datetime" placeholder="Optional: Pick a date and time">
-            <button id="add-btn" onclick="addTask()">Add</button>
-        </div>
-        <ul id="todo-list">
-            <!-- Tasks will appear here -->
-        </ul>
-        <input type="text" id="search" oninput="searchTasks()" placeholder="Search tasks...">
+        <input type="text" id="search" placeholder="Search tasks" oninput="searchTasks()">
+        <ul id="todo-list"></ul>
     </div>
-    <script src="script.js"></script>
-    <!-- Include Flatpickr JS -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <!-- Initialize Flatpickr -->
-    <script>
-        flatpickr("#due-datetime", {
-            enableTime: true,
-            dateFormat: "Y-m-d H:i",
-            // Additional configurations can be added here
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
