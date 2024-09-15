@@ -29,6 +29,8 @@ function addTask() {
   todoList.appendChild(listItem);
   todoInput.value = '';
 
+  // Add animation class
+  listItem.classList.add('fade-in');
   listItem.addEventListener('click', () => {
     listItem.classList.toggle('completed');
   });
