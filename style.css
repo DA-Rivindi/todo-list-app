@@ -1,4 +1,4 @@
-/* Importing a modern font and setting up the basic styles */
+/* Apply a modern font and set a global style */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 body {
@@ -68,6 +68,7 @@ h1 {
   box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.1), 
               inset -4px -4px 8px rgba(255, 255, 255, 0.9);
   font-size: 16px;
+  font-family: 'Poppins', sans-serif; /* Match font style */
   transition: box-shadow 0.3s ease;
 }
 
@@ -88,6 +89,7 @@ h1 {
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
   font-size: 16px;
+  font-family: 'Poppins', sans-serif; /* Match font style */
 }
 
 #add-btn:hover {
@@ -136,6 +138,7 @@ button.remove-btn {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Poppins', sans-serif; /* Match font style */
 }
 
 button.remove-btn i {
@@ -197,31 +200,3 @@ li {
     transform: translateY(0);
   }
 }
-
-/* Responsive Design */
-@media (max-width: 480px) {
-  .app-container {
-    width: 90%;
-    padding: 20px;
-  }
-
-  #add-btn {
-    padding: 10px 15px;
-    font-size: 14px;
-  }
-
-  #todo-input {
-    font-size: 14px;
-  }
-
-  li {
-    padding: 12px;
-    font-size: 14px;
-  }
-
-  button.remove-btn {
-    padding: 6px 10px;
-    font-size: 12px;
-  }
-}
-
