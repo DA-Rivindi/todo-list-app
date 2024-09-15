@@ -7,16 +7,16 @@ function addTask() {
     if (taskInput.value.trim() === '') return; // Do nothing if the input is empty
     
     const taskItem = document.createElement('li');
-    taskItem.classList.add('task-item', category); // Add task-item and category class
+    taskItem.classList.add('task-item', 'active'); // Default to active
     taskItem.id = `task-${Date.now()}`;
     taskItem.draggable = true;
     
     // Format the due date text if provided
     const dueText = dueDatetime ? ` (Due: ${dueDatetime})` : '';
     taskItem.innerHTML = `
-        ${taskInput.value}${dueText} 
+        <input type="checkbox" class="status-checkbox" onclick="toggleStatus(this)" />
+        ${taskInput.value}${dueText}
         <button class="remove-btn" onclick="removeTask(this.parentElement)">X</button>
-        <button class="status-btn" onclick="toggleStatus(this)">${category === 'completed' ? 'Mark as Active' : 'Mark as Completed'}</button>
     `;
     
     // Add drag-and-drop functionality
@@ -82,18 +82,16 @@ function searchTasks() {
 }
 
 // Function to toggle task status between active and completed
-function toggleStatus(button) {
-    const taskItem = button.parentElement;
-    const isCompleted = taskItem.classList.contains('completed');
+function toggleStatus(checkbox) {
+    const taskItem = checkbox.parentElement;
+    const isChecked = checkbox.checked;
     
-    if (isCompleted) {
-        taskItem.classList.remove('completed');
-        taskItem.classList.add('active');
-        button.textContent = 'Mark as Active';
-    } else {
+    if (isChecked) {
         taskItem.classList.remove('active');
         taskItem.classList.add('completed');
-        button.textContent = 'Mark as Completed';
+    } else {
+        taskItem.classList.remove('completed');
+        taskItem.classList.add('active');
     }
 }
 
