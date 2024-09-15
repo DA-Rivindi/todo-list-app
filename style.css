@@ -9,6 +9,7 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
+  transition: background-color 0.3s;
 }
 
 /* Style the main app container */
@@ -19,6 +20,7 @@ body {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
   width: 350px;
   text-align: center;
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 /* Add a stylish header */
@@ -94,7 +96,7 @@ li:hover {
   transform: translateY(-2px);
 }
 
-/* Remove button with hover effect */
+/* Remove button with icon */
 button.remove-btn {
   background-color: #dc3545;
   color: white;
@@ -104,6 +106,12 @@ button.remove-btn {
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
   font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+button.remove-btn i {
+  margin-left: 5px;
 }
 
 button.remove-btn:hover {
@@ -118,7 +126,39 @@ li.completed {
   opacity: 0.7;
 }
 
-/* Add subtle animation when a task is added or removed */
+/* Theme Toggle Button */
+.theme-toggle-container {
+  text-align: right;
+}
+
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+body.dark-mode #theme-toggle {
+  color: #f0f2f5;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #181818;
+}
+
+.app-container.dark-mode {
+  background-color: #333;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Smooth transition for input and list items */
+#todo-input,
+#add-btn {
+  transition: all 0.3s;
+}
+
 li {
   opacity: 0;
   transform: translateY(10px);
