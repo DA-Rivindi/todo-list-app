@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <!-- Include Flatpickr CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
 </head>
 <body>
     <div class="app-container">
@@ -25,8 +26,8 @@
                 <option value="work">Work</option>
                 <option value="personal">Personal</option>
             </select>
-            <!-- Flatpickr date input -->
-            <input type="text" id="due-date">
+            <!-- Flatpickr date and time input -->
+            <input type="text" id="due-datetime" placeholder="Optional: Pick a date and time">
             <button id="add-btn" onclick="addTask()">Add</button>
         </div>
         <ul id="todo-list">
@@ -39,9 +40,10 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <!-- Initialize Flatpickr -->
     <script>
-        flatpickr("#due-date", {
-            dateFormat: "Y-m-d",
-            // Add additional configurations here if needed
+        flatpickr("#due-datetime", {
+            enableTime: true,
+            dateFormat: "Y-m-d H:i",
+            // Additional configurations can be added here
         });
     </script>
 </body>
