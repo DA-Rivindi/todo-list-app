@@ -1,6 +1,9 @@
+/* Apply a modern font and set a global style */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f9f9f9;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f2f5;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,66 +11,123 @@ body {
   margin: 0;
 }
 
+/* Style the main app container */
 .app-container {
   background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: 300px;
-}
-
-h1 {
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  width: 350px;
   text-align: center;
-  color: #333;
 }
 
+/* Add a stylish header */
+h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  letter-spacing: 1.2px;
+}
+
+/* Style the input container */
 .input-container {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
 
+/* Modern input box */
 #todo-input {
   flex: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border 0.3s;
 }
 
+#todo-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Add button styling with hover effect */
 #add-btn {
-  background-color: #28a745;
+  background-color: #007bff;
   color: white;
   border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
+  padding: 12px 16px;
+  border-radius: 6px;
   margin-left: 10px;
   cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  font-size: 16px;
 }
 
+#add-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Style the task list with modern spacing */
 #todo-list {
   list-style-type: none;
   padding: 0;
   margin-top: 20px;
 }
 
+/* Individual task items */
 li {
-  background-color: #f4f4f4;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
+  background-color: #f9f9f9;
+  padding: 14px;
+  margin-bottom: 12px;
+  border-radius: 8px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
+li:hover {
+  background-color: #f1f1f1;
+  transform: translateY(-2px);
+}
+
+/* Remove button with hover effect */
 button.remove-btn {
   background-color: #dc3545;
   color: white;
   border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 8px 12px;
+  border-radius: 6px;
   cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  font-size: 14px;
 }
 
+button.remove-btn:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+/* Completed task with strike-through */
 li.completed {
   text-decoration: line-through;
   color: gray;
+  opacity: 0.7;
+}
+
+/* Add subtle animation when a task is added or removed */
+li {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
