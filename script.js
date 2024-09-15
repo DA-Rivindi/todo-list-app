@@ -2,6 +2,7 @@
 const addButton = document.getElementById('add-btn');
 const todoInput = document.getElementById('todo-input');
 const todoList = document.getElementById('todo-list');
+const themeToggleButton = document.getElementById('theme-toggle');
 
 // Add event listener to the "Add" button
 addButton.addEventListener('click', addTask);
@@ -10,33 +11,32 @@ addButton.addEventListener('click', addTask);
 function addTask() {
   const taskText = todoInput.value.trim();
 
-  // Check if the input is empty
   if (taskText === '') {
     alert('Please enter a task.');
     return;
   }
 
-  // Create new list item (li)
   const listItem = document.createElement('li');
   listItem.textContent = taskText;
 
-  // Create remove button
+  // Create remove button with icon
   const removeButton = document.createElement('button');
-  removeButton.textContent = 'Remove';
   removeButton.classList.add('remove-btn');
+  removeButton.innerHTML = '<i class="fas fa-trash"></i>'; // FontAwesome trash icon
   removeButton.addEventListener('click', () => listItem.remove());
 
-  // Add remove button to list item
   listItem.appendChild(removeButton);
-
-  // Add the new task to the list
   todoList.appendChild(listItem);
-
-  // Clear input box
   todoInput.value = '';
 
-  // Mark task as completed when clicked
   listItem.addEventListener('click', () => {
     listItem.classList.toggle('completed');
   });
 }
+
+// Dark Mode Toggle
+themeToggleButton.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  const isDarkMode = document.body.classList.contains('dark-mode');
+  themeToggleButton.textContent = isDarkMode ? '🌞' : '🌙';
+});
