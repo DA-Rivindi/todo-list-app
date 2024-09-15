@@ -1,3 +1,4 @@
+/* Importing Poppins font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 /* Global Styles */
@@ -9,6 +10,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    padding: 10px;
     transition: background-color 0.3s ease;
 }
 
@@ -19,14 +21,15 @@ body {
     border-radius: 20px;
     box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.1), 
                 -8px -8px 15px rgba(255, 255, 255, 0.9);
-    width: 360px;
+    width: 100%;
+    max-width: 400px;
     text-align: center;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Heading Styling */
 h1 {
-    font-size: 26px;
+    font-size: 24px;
     color: #333;
     margin-bottom: 20px;
 }
@@ -34,6 +37,7 @@ h1 {
 /* Theme Toggle Button */
 .theme-toggle-container {
     text-align: right;
+    margin-bottom: 20px;
 }
 
 #theme-toggle {
@@ -60,7 +64,9 @@ h1 {
     margin-bottom: 20px;
 }
 
-#todo-input {
+#todo-input,
+#category,
+#due-date {
     padding: 12px;
     border: none;
     border-radius: 20px;
@@ -69,40 +75,34 @@ h1 {
                 inset -4px -4px 8px rgba(255, 255, 255, 0.9);
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
-    transition: box-shadow 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 #todo-input::placeholder {
     font-family: 'Poppins', sans-serif;
 }
 
-#todo-input:focus {
+#todo-input:focus,
+#category:focus,
+#due-date:focus {
     outline: none;
     box-shadow: inset 6px 6px 12px rgba(0, 0, 0, 0.2), 
                 inset -6px -6px 12px rgba(255, 255, 255, 0.9);
-}
-
-#category, #due-date {
-    padding: 12px;
-    border: none;
-    border-radius: 20px;
-    background-color: #f5f5f5;
-    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.1), 
-                inset -4px -4px 8px rgba(255, 255, 255, 0.9);
-    font-size: 16px;
-    font-family: 'Poppins', sans-serif;
 }
 
 #add-btn {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 12px 20px;
+    padding: 12px;
     border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 #add-btn:hover {
@@ -112,6 +112,9 @@ h1 {
 
 /* Filter Buttons */
 .filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
     margin-bottom: 20px;
 }
 
@@ -119,9 +122,10 @@ h1 {
     background-color: #f0f0f0;
     border: none;
     padding: 10px;
-    margin: 0 5px;
     border-radius: 20px;
     cursor: pointer;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .filter-buttons button:hover {
@@ -139,13 +143,14 @@ h1 {
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
     width: 100%;
+    box-sizing: border-box;
 }
 
 /* Task List */
 #todo-list {
     list-style-type: none;
     padding: 0;
-    margin-top: 20px;
+    margin: 0;
 }
 
 /* Task Item */
@@ -173,7 +178,7 @@ button.remove-btn {
     background-color: #dc3545;
     color: white;
     border: none;
-    padding: 8px 12px;
+    padding: 8px;
     border-radius: 50%;
     cursor: pointer;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), 
@@ -209,7 +214,8 @@ body.dark-mode {
                 -8px -8px 15px rgba(255, 255, 255, 0.2);
 }
 
-#todo-input.dark-mode {
+#todo-input.dark-mode,
+#search.dark-mode {
     background-color: #333;
 }
 
@@ -219,20 +225,5 @@ body.dark-mode {
 
 #todo-list li.dark-mode {
     background-color: #333;
-}
-
-/* Smooth Transition for Input and List Items */
-#todo-input,
-#add-btn {
-    transition: all 0.3s ease;
-}
-
-li {
-    opacity: 0;
-    transform: translateY(10px);
-    animation: fadeIn 0.3s ease forwards;
-}
-
-li.removing {
-    animation: fadeOut 0.3s ease forwards;
+    color: #f5f5f5;
 }
