@@ -82,7 +82,7 @@ function searchTasks() {
 
 // Toggle Dark Mode
 document.getElementById('theme-toggle').addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
+    const isDarkMode = document.body.classList.toggle('dark-mode');
     document.querySelector('.app-container').classList.toggle('dark-mode');
     document.getElementById('todo-input').classList.toggle('dark-mode');
     document.getElementById('add-btn').classList.toggle('dark-mode');
@@ -90,4 +90,15 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
     document.getElementById('due-datetime').classList.toggle('dark-mode');
     const tasks = document.querySelectorAll('#todo-list li');
     tasks.forEach(task => task.classList.toggle('dark-mode'));
+    
+    // Toggle button icon based on theme
+    const themeToggleButton = document.getElementById('theme-toggle');
+    themeToggleButton.textContent = isDarkMode ? '☀️' : '🌙';
+});
+
+// Initialize Flatpickr
+flatpickr("#due-datetime", {
+    enableTime: true,
+    dateFormat: "Y-m-d H:i",
+    time_24hr: true
 });
